@@ -138,6 +138,28 @@ exports.GetApi = function (_req, _res, _callback) {
           return Me.cb(200, "", "success")
         }
       })
+    },
+    GetXuhaoSrc: function () {
+      var Me = this;
+      var xuhao = Me.getParam("xuhao");
+      var pathName = settings.uploadDiskUrl;
+      fs.readdir(pathName, function (err, files) {
+        var dirs = [];
+        (function iterator(i) {
+          if (i == files.length) {
+            return Me.cb(200, "", dirs);
+          }
+          fs.stat(path.join(pathName, files[i]), function (err, data) {
+            if (data.isFile()) {
+              if (files[i].split("-")[0] == xuhao) {
+                dirs.push(settings.uploadUrl + files[i]);
+              }
+            }
+            iterator(i + 1);
+          });
+        })(0);
+      });
+
     }
   }
 }

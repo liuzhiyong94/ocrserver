@@ -16,6 +16,8 @@
         initDataDiskUrl: "G:/Git/ocrserver/web/initdata",    //初始json文件磁盘位置
         initDataUrl: "http://192.168.1.19:3000/initdata/",    //初始json文件服务器位置
         modifyDataDiskUrl: "G:/Git/ocrserver/web/modifydata",    //修改后json文件磁盘位置
-        modifyDataUrl: "http://192.168.1.19:3000/modifydata/"    //修改后json文件服务器位置
+        modifyDataUrl: "http://192.168.1.19:3000/modifydata/",    //修改后json文件服务器位置
+        uploadUrl: "http://192.168.1.19:3000/upload/",    //前台文件上传路径
+        uploadDiskUrl: "G:/Git/ocrserver/web/upload/",    //前台文件上传路径
     };
 }).call(this);
