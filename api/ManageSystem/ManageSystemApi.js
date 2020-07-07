@@ -105,12 +105,12 @@ exports.GetApi = function (_req, _res, _callback) {
           }
           else {
             var str = TransJson(result, type);
-            ep.emit("ep_createjson", str);
-            // ep.emit("ep_createjson", JSON.stringify(result, "", "\t"));
+            ep.emit("ep_createdocx", str);
+            ep.emit("ep_createjson", JSON.stringify(result, "", "\t"));
           }
         })
       })
-      ep.on("ep_createjson", function (jsonstr) {
+      ep.on("ep_createdocx", function (jsonstr) {
         var jsonname = filename.split(".")[0] + ".docx";
         fs.writeFile(initDataPath + jsonname, jsonstr, function (err) {
           if (err) {
@@ -122,6 +122,17 @@ exports.GetApi = function (_req, _res, _callback) {
               "jsonstr": jsonstr,
               "jsonname": jsonname
             })
+          }
+        })
+      })
+      ep.on("ep_createjson", function (jsonstr) {
+        var jsonname = filename.split(".")[0] + ".json";
+        fs.writeFile(initDataPath + jsonname, jsonstr, function (err) {
+          if (err) {
+            console.log("ep_createjson_err:", err);
+          }
+          else {
+            
           }
         })
       })
