@@ -109,7 +109,7 @@ exports.GetApi = function (_req, _res, _callback) {
         })
       })
       ep.on("ep_createjson", function (jsonstr) {
-        var jsonname = filename.split(".")[0] + ".json";
+        var jsonname = filename.split(".")[0] + ".docx";
         fs.writeFile(initDataPath + jsonname, jsonstr, function (err) {
           if (err) {
             console.log("ep_createjson_err:", err);
