@@ -34,8 +34,9 @@ function VatOcr(image2base64, type, cb) {
         else {
             body = JSON.parse(body)
             var data = body.data;
+            data = data.replace(/\\/g, "");
             if (type == "Generalmedicalbillclassify_deep") {
-                data = JSON.parse(body.data)
+                data = JSON.parse(data)
             }
             if (body.code == 200) {
                 console.log('OCR识别成功');
