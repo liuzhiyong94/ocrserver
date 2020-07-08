@@ -132,7 +132,7 @@ exports.GetApi = function (_req, _res, _callback) {
             console.log("ep_createjson_err:", err);
           }
           else {
-            
+
           }
         })
       })
@@ -255,7 +255,11 @@ function TransJson(json, type) {
   }
   // 3.type="GeneralMedicalText",小结检测
   else if (type == "GeneralMedicalText") {
-    returnRes += json.text;
+    // returnRes += json.text;
+    let text = json.text.split(" ");
+    for (let i = 0; i < text.length; i++) {
+      returnRes += text[i] + "\n";
+    }
   }
   // 4.type="Generalmedicalbillclassify_deep",门诊住院
   else if (type == "Generalmedicalbillclassify_deep") {
